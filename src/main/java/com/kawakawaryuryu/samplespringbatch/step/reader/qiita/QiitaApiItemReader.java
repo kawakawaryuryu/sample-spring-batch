@@ -1,4 +1,4 @@
-package com.kawakawaryuryu.samplespringbatch.step.api.qiita;
+package com.kawakawaryuryu.samplespringbatch.step.reader.qiita;
 
 import org.springframework.batch.item.ItemReader;
 import org.springframework.stereotype.Component;
@@ -7,18 +7,25 @@ import org.springframework.web.client.RestOperations;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class QiitaApiItemReader implements ItemReader<QiitaArticle> {
 
     private final RestOperations restOperations;
 
+    private final AtomicInteger atomicInteger;
+
     public QiitaApiItemReader(RestOperations restOperations) {
         this.restOperations = restOperations;
+        this.atomicInteger = new AtomicInteger(0);
     }
 
     @Override
     public QiitaArticle read() {
+        if (atomicInteger.getAndIncrement() == 8) {
+            return null;
+        }
         URI uri = URI.create("https://qiita.com/api/v2/items?per_page=1");
         QiitaArticleResponse[] response = restOperations.getForObject(uri, QiitaArticleResponse[].class);
         return Arrays.stream(Optional.ofNullable(response).orElse(new QiitaArticleResponse[]{}))

@@ -1,0 +1,8 @@
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@55d8c2c4
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@798cf6d2
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@1c1fa494
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@77c66a4f
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@649b5891
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@7cf8f45a
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@62cf6a84
+com.kawakawaryuryu.samplespringbatch.step.reader.qiita.QiitaArticle@204d9edf

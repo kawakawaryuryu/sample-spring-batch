@@ -1,4 +1,4 @@
-package com.kawakawaryuryu.samplespringbatch.step.api.qiita;
+package com.kawakawaryuryu.samplespringbatch.step.reader.qiita;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
