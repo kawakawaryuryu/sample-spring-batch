@@ -11,6 +11,6 @@ public class Step1ExecutionListener {
     @AfterStep
     public ExitStatus afterStep(StepExecution stepExecution) {
         System.out.println("finish step1");
-        return ExitStatus.STOPPED;
+        return stepExecution.getExitStatus();
     }
 }
