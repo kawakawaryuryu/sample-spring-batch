@@ -1,4 +1,4 @@
-package com.kawakawaryuryu.samplespringbatch.step.reader.qiita;
+package com.kawakawaryuryu.samplespringbatch.step.chunk.reader.qiita;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

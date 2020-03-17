@@ -1,4 +1,4 @@
-package com.kawakawaryuryu.samplespringbatch.step.reader.qiita;
+package com.kawakawaryuryu.samplespringbatch.step.chunk.reader.qiita;
 
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
