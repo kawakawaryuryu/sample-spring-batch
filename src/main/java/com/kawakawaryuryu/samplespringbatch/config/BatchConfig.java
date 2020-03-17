@@ -10,7 +10,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.file.FlatFileItemWriter;
 import org.springframework.batch.item.file.builder.FlatFileItemWriterBuilder;
 import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
 import org.springframework.context.annotation.Bean;
@@ -66,7 +66,8 @@ public class BatchConfig {
      * QiitaArticleをtoStringしてoutput.txtに書き込んでいく
      */
     @Bean
-    public ItemWriter<QiitaArticle> itemWriter() {
+    @StepScope
+    public FlatFileItemWriter<QiitaArticle> itemWriter() {
         return new FlatFileItemWriterBuilder<QiitaArticle>()
                 .name("itemWriter")
                 .resource(new FileSystemResource("output.txt"))
