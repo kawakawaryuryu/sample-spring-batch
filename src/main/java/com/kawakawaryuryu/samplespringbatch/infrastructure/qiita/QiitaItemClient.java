@@ -1,6 +1,5 @@
 package com.kawakawaryuryu.samplespringbatch.infrastructure.qiita;
 
-import com.kawakawaryuryu.samplespringbatch.step.chunk.reader.qiita.QiitaArticleResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestOperations;

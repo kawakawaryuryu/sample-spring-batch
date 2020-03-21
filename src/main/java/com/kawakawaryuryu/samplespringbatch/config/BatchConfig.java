@@ -1,7 +1,7 @@
 package com.kawakawaryuryu.samplespringbatch.config;
 
 import com.kawakawaryuryu.samplespringbatch.listener.Step1ExecutionListener;
-import com.kawakawaryuryu.samplespringbatch.step.chunk.reader.qiita.QiitaArticle;
+import com.kawakawaryuryu.samplespringbatch.step.chunk.qiita.QiitaArticle;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;

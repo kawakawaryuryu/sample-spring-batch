@@ -1,5 +1,6 @@
-package com.kawakawaryuryu.samplespringbatch.step.chunk.reader.qiita;
+package com.kawakawaryuryu.samplespringbatch.step.chunk.qiita;
 
+import com.kawakawaryuryu.samplespringbatch.infrastructure.qiita.QiitaArticleResponse;
 import com.kawakawaryuryu.samplespringbatch.infrastructure.qiita.QiitaItemClient;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
