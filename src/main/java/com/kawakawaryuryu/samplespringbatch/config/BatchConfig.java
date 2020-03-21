@@ -81,16 +81,16 @@ public class BatchConfig {
     }
 
     @Bean
-    public Job job2(Step step2) {
-        return jobBuilderFactory.get("job2")
-                .flow(step2)
+    public Job qiitaTaskletJob(Step qiitaTaskletStep) {
+        return jobBuilderFactory.get("qiitaTaskletJob")
+                .flow(qiitaTaskletStep)
                 .end()
                 .build();
     }
 
     @Bean
-    public Step step2() {
-        return stepBuilderFactory.get("step2")
+    public Step qiitaTaskletStep() {
+        return stepBuilderFactory.get("qiitaTaskletStep")
                 .tasklet(qiitaTasklet)
                 .build();
     }

@@ -16,7 +16,7 @@ public class QiitaItemClient {
     }
 
     public ResponseEntity<QiitaArticleResponse[]> getArticles() {
-        URI uri = URI.create("https://qiita.com/api/v2/items?per_page=1");
+        URI uri = URI.create("https://qiita.com/api/v2/items?per_page=2");
         return restOperations.getForEntity(uri, QiitaArticleResponse[].class);
     }
 }
