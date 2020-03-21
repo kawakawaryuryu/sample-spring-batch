@@ -2,6 +2,7 @@ package com.kawakawaryuryu.samplespringbatch.config;
 
 import com.kawakawaryuryu.samplespringbatch.listener.Step1ExecutionListener;
 import com.kawakawaryuryu.samplespringbatch.step.chunk.qiita.QiitaArticle;
+import com.kawakawaryuryu.samplespringbatch.step.tasklet.qiita.QiitaTasklet;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -31,16 +32,20 @@ public class BatchConfig {
 
     private final Step1ExecutionListener step1ExecutionListener;
 
+    private final QiitaTasklet qiitaTasklet;
+
     public BatchConfig(JobBuilderFactory jobBuilderFactory,
                        StepBuilderFactory stepBuilderFactory,
                        ItemReader<QiitaArticle> qiitaArticleItemReader,
                        ItemProcessor<QiitaArticle, QiitaArticle> qiitaItemProcessor,
-                       Step1ExecutionListener step1ExecutionListener) {
+                       Step1ExecutionListener step1ExecutionListener,
+                       QiitaTasklet qiitaTasklet) {
         this.jobBuilderFactory = jobBuilderFactory;
         this.stepBuilderFactory = stepBuilderFactory;
         this.qiitaArticleItemReader = qiitaArticleItemReader;
         this.qiitaItemProcessor = qiitaItemProcessor;
         this.step1ExecutionListener = step1ExecutionListener;
+        this.qiitaTasklet = qiitaTasklet;
     }
 
     @Bean
@@ -72,6 +77,21 @@ public class BatchConfig {
                 .name("itemWriter")
                 .resource(new FileSystemResource("output.txt"))
                 .lineAggregator(new PassThroughLineAggregator<>())
+                .build();
+    }
+
+    @Bean
+    public Job job2(Step step2) {
+        return jobBuilderFactory.get("job2")
+                .flow(step2)
+                .end()
+                .build();
+    }
+
+    @Bean
+    public Step step2() {
+        return stepBuilderFactory.get("step2")
+                .tasklet(qiitaTasklet)
                 .build();
     }
 }
