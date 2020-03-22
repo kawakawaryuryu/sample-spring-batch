@@ -22,7 +22,9 @@ public class QiitaTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-        Arrays.stream(Optional.ofNullable(qiitaItemClient.getArticles().getBody()).orElse(new QiitaArticleResponse[]{}))
+        QiitaArticleResponse[] responseBody = Optional.ofNullable(qiitaItemClient.getArticles().getBody())
+                .orElse(new QiitaArticleResponse[]{});
+        Arrays.stream(responseBody)
                 .forEach(article -> System.out.println("id=" + article.getId() + ", title=" + article.getTitle()
                         + ", like_count=" + article.getLikeCount() + ", url=" + article.getUrl()));
 
