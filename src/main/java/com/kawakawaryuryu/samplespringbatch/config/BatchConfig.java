@@ -1,6 +1,6 @@
 package com.kawakawaryuryu.samplespringbatch.config;
 
-import com.kawakawaryuryu.samplespringbatch.step.tasklet.qiita.QiitaTasklet;
+import com.kawakawaryuryu.samplespringbatch.step.tasklet.HelloWorldTasklet;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -17,28 +17,28 @@ public class BatchConfig {
 
     private final StepBuilderFactory stepBuilderFactory;
 
-    private final QiitaTasklet qiitaTasklet;
+    private final HelloWorldTasklet helloWorldTasklet;
 
     public BatchConfig(JobBuilderFactory jobBuilderFactory,
                        StepBuilderFactory stepBuilderFactory,
-                       QiitaTasklet qiitaTasklet) {
+                       HelloWorldTasklet helloWorldTasklet) {
         this.jobBuilderFactory = jobBuilderFactory;
         this.stepBuilderFactory = stepBuilderFactory;
-        this.qiitaTasklet = qiitaTasklet;
+        this.helloWorldTasklet = helloWorldTasklet;
     }
 
     @Bean
-    public Job qiitaTaskletJob(Step qiitaTaskletStep) {
-        return jobBuilderFactory.get("qiitaTaskletJob")
-                .flow(qiitaTaskletStep)
+    public Job helloWorldJob(Step helloWorldStep) {
+        return jobBuilderFactory.get("helloWorldJob")
+                .flow(helloWorldStep)
                 .end()
                 .build();
     }
 
     @Bean
-    public Step qiitaTaskletStep() {
-        return stepBuilderFactory.get("qiitaTaskletStep")
-                .tasklet(qiitaTasklet)
+    public Step helloWorldStep() {
+        return stepBuilderFactory.get("helloWorldStep")
+                .tasklet(helloWorldTasklet)
                 .build();
     }
 }
